@@ -14,7 +14,7 @@ class Banner extends Model
 
     // Indicar quais colunas podem ser cadastradas
     protected $fillable = [
-        'name',
+        'titulo',
         'legenda',
         'imagem',
         'status',

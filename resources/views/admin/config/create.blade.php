@@ -23,6 +23,12 @@
         <label>Descrição: </label>
         <input type="text" name="slogan" placeholder="Descrição do Site" value="{{ old('slogan') }}" required></br></br>
 
+        <label>Logo: </label>
+        <input type="file" name="logo" placeholder="" value="{{ old('logo') }}" required></br></br>
+
+        <label>Icone: </label>
+        <input type="file" name="favicon" placeholder="" value="{{ old('favicon') }}" required></br></br>
+
         <label>Telefone: </label>
         <input type="text" name="telefone" placeholder="Informe o Telefone" value="{{ old('telefone') }}" required></br></br>
 

@@ -7,8 +7,8 @@
 
 <form action="{{ route('admin.banner.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
-    <label for="name">Nome:</label><br>
-    <input type="text" id="name" name="name"><br>
+    <label for="titulo">Título:</label><br>
+    <input type="text" id="titulo" name="titulo"><br>
     <label for="legenda">Legenda:</label><br>
     <input type="text" id="legenda" name="legenda"><br>
     <label for="imagem">Imagem:</label><br>

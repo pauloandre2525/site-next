@@ -60,13 +60,24 @@
                     <span>Configurações</span>
                 </a>
             </li>
+            @can('index-role')
+            <li class="nav-item">
+                <a @class(['nav-link', 'active'=> isset($menu) && $menu == 'role'])class="nav-link" href="{{ route('admin.role.index') }}">
+                    <i class="fa-solid fa-network-wired"></i>
+                    <span>Grupos de Usuários</span>
+                </a>
+            </li>
+            @endcan
 
+            @can('index-user')
             <li class="nav-item">
                 <a @class(['nav-link', 'active'=> isset($menu) && $menu == 'user'])class="nav-link" href="{{ route('admin.user.index') }}">
                     <i class="fas fa-fw fa-user"></i>
                     <span>Usuários</span>
                 </a>
             </li>
+            @endcan
+
 
             <!-- Nav Item - Site -->
             <li class="nav-item">
@@ -77,10 +88,9 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Configurações do Site:</h6>
+                        @can('index-banner')
                         <a class="collapse-item" href="{{ route('admin.banner.index') }}">Banner Header</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
+                        @endcan
                     </div>
                 </div>
             </li>
@@ -93,25 +103,7 @@
                 Addons
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item active">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
-                </a>
-                <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item active" href="blank.html">Blank Page</a>
-                    </div>
-                </div>
-            </li>
+
 
             <!-- Nav Item - Sair -->
             <li class="nav-item">
@@ -120,12 +112,7 @@
                     <span>Sair</span></a>
             </li>
 
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li>
+
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

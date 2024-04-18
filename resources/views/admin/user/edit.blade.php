@@ -31,6 +31,24 @@
                 <input type="password" name="password" class="form-control" id="password" value="{{ old('password', $user->password) }}">
             </div>
 
+            <div class="mb-3">
+                <label for="roles" class="form-label">Papel</label>
+                <select name="roles" class="form-select" id="roles">
+                    <option value="">Selecione</option>
+                    @forelse ($roles as $role)
+                    @if ($role != "Super Admin")
+                    <option value="{{ $role }}" {{ old('roles') == $role || $role == $userRoles ? 'selected' : '' }}>{{ $role }} </option>
+                    @else
+                    @if (Auth::user()->hasRole('Super Admin'))
+                    <option value="{{ $role }}" {{ old('roles') == $role || $role == $userRoles ? 'selected' : '' }}>{{ $role }} </option>
+                    @endif
+                    @endif
+                    @empty
+                    <option value="">Nenhum papel disponível</option>
+                    @endforelse
+                </select>
+            </div>
+
             <div class="col-12">
                 <button class="btn btn-primary" type="submit">Atualizar</button>
             </div>

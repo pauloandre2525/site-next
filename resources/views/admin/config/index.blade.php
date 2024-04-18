@@ -6,7 +6,9 @@
 <div class="card">
     <div class="card-header">
         Configurações do Site
+        @can('edit-config')
         <a href="{{ route('admin.config.edit', ['config' => $config->id ]) }}"><button type="button" class="btn btn-primary btn-sm float-end">Editar</button></a>
+        @endcan
     </div>
 
     <div class="card-body">
@@ -14,9 +16,18 @@
         <x-alert />
 
 
-
         <form class="row g-3">
             <input type="hidden" name="id" value="{{ old('id', $config->id) }}">
+
+            <div class="col-md-6">
+                <label for="logo" class="form-label">Logo</label>
+                <img src="{{ asset($config->logo) }}" id="logo" width="300px" disabled>
+            </div>
+
+            <div class="col-md-6">
+                <label for="favicon" class="form-label">Icone</label>
+                <img src="{{ asset($config->favicon) }}" id="favicon" width="60px" disabled>
+            </div>
 
             <div class="col-md-6">
                 <label for="titulo" class="form-label">Título</label>
@@ -26,6 +37,8 @@
                 <label for="slogan" class="form-label">Slogan</label>
                 <input type="text" name="slogan" class="form-control" id="slogan" value="{{ old('slogan', $config->slogan) }}" disabled>
             </div>
+            
+            
             <div class="col-12">
                 <label for="telefone" class="form-label">Telefone</label>
                 <input type="text" name="telefone" class="form-control" id="telefone" value="{{ old('telefone', $config->telefone) }}" disabled>

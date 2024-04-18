@@ -23,10 +23,9 @@ class BannerController extends Controller
     //Detalhar Configurações
     public function show(Request $request, Banner $banner)
     {
-        return view('admin.banner.index', ['banner' => $banner]);
+        return view('admin.banner.show', ['banner' => $banner]);
     }
-
-
+ 
     //Carregar o Formulário de Cadastro
     public function create()
     {
@@ -38,24 +37,27 @@ class BannerController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'titulo' => 'required',
             'legenda' => 'required',
             'imagem' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'status' => 'required',
         ]);
 
-        $imageName = time() . '.' . $request->imagem->extension();
+        $imagem = time() . '.' . $request->imagem->extension();
 
-        $request->imagem->move(public_path('images'), $imageName);
+       $path = $request->imagem->storeAs('banners', $imagem, 'public');
+
+        // Obtenha o caminho completo da imagem
+        $fullPath = asset('storage/' . $path);
 
         $banner = Banner::create([
-            'name' => $request->name,
+            'titulo' => $request->titulo,
             'legenda' => $request->legenda,
-            'imagem' => $imageName,
+            'imagem' => $fullPath,
             'status' => $request->status,
         ]);
 
-        return redirect()->route('admin.banner.index')
+        return redirect()->route('admin.banner.index', ['banner' => $banner])
         ->with('success', 'Configurações cadastradas com sucesso!');
     }
 
@@ -71,7 +73,7 @@ class BannerController extends Controller
     public function update(Request $request)
     {
         $request->update([
-            'name' => $request->titulo,
+            'titulo' => $request->titulo,
             'legenda' => $request->legenda,
             'imagem' => $request->imagem,
             'status' => $request->status

@@ -16,6 +16,8 @@ class Config extends Model
     protected $fillable = [
         'titulo',
         'slogan',
+        'logo',
+        'favicon',
         'telefone',
         'endereco',
     ];

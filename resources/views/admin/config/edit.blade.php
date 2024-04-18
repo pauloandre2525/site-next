@@ -13,7 +13,7 @@
         <x-alert />
 
 
-        <form class="row g-3" action="{{ route('admin.config.update', ['config' => $config->id]) }}" method="POST">
+        <form class="row g-3" action="{{ route('admin.config.update', ['config' => $config->id]) }}" enctype="multipart/form-data" method="POST">
             @csrf
             @method('PUT')
 
@@ -24,6 +24,14 @@
             <div class="col-md-6">
                 <label for="slogan">Slogan: </label>
                 <input type="text" name="slogan" id="slogan" class="form-control" placeholder="Descrição do Site " value="{{ old('slogan', $config->slogan) }}" required>
+            </div>
+            <div class="col-md-6">
+                <label for="logo">Logo: </label>
+                <input type="file" name="logo" id="logo" class="form-control" placeholder="Descrição do Site " value="{{ old('logo', $config->logo) }}" >
+            </div>
+            <div class="col-md-6">
+                <label for="favicon">Icone: </label>
+                <input type="file" name="favicon" id="favicon" class="form-control" placeholder="Descrição do Site " value="{{ old('favicon', $config->favicon) }}" >
             </div>
             <div class="col-md-6">
                 <label for="telefone">Telefone: </label>

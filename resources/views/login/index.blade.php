@@ -10,7 +10,7 @@
         <!-- Outer Row -->
         <div class="row justify-content-center">
 
-            <div class="col-xl-6 col-lg-6 col-md-6">
+            <div class="col-xl-5 col-lg-5 col-md-5">
 
                 <div class="card shadow-lg my-5">
                     <div class="card-body">
@@ -18,7 +18,7 @@
                         <div class="col-md-12">
                             <div class="p-5">
                                 <div>
-                                    <img src="{{ asset('img/logo.png')}}" class="mx-auto d-block mb-5" width="300px">
+                                    <img src="{{ asset('img/logo.png')}}" class="mx-auto d-block mb-5" width="250px">
                                 </div>
 
                                 <hr>

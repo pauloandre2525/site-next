@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Banner;
-use App\Models\Config;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -12,20 +12,21 @@ class HomeController extends Controller
     {
 
         // Recuperar os registro do Banco de Dados
-        $config = Config::orderBy('id')->paginate(2);
-        $banner = Banner::orderBy('id')->paginate(2);
+        $config = DB::table('config')->first();
+        $banners = Banner::all();
 
         // carregar a VIEW
-        return view('site.index', ['configs' => $config, 'banners' => $banner]);
+        return view('site.index', ['config' => $config, 'banners' => $banners]);
+
     }
 
-    public function banner()
-    {
+    // public function banner()
+    // {
 
-        // Recuperar os registro do Banco de Dados
-        $banner = Banner::orderBy('id')->paginate(2);
+    //     // Recuperar os registro do Banco de Dados
+    //     $banners = Banner::all();
 
-        // carregar a VIEW
-        return view('site.index', ['banners' => $banner]);
-    }
+    //     // carregar a VIEW
+    //     return view('site.index', ['banners' => $banners]);
+    // }
 }

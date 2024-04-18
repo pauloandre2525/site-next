@@ -54,12 +54,26 @@ class ConfigController extends Controller
     public function update(Request $request)
     {
         $config = Config::find(1);
+
+        if ($request->hasFile('logo')) {
+            $logo = $request->file('logo');
+            $logoPath = $logo->storeAs('storage/logos', 'logo.png');
+            $config->logo = $logoPath;
+        }
+
+        if ($request->hasFile('favicon')) {
+            $favicon = $request->file('favicon');
+            $faviconPath = $favicon->storeAs('storage', 'favicon.ico');
+            $config->favicon = $faviconPath;
+        }
+
         $config->update([
             'titulo' => $request->titulo,
-            'descricao' => $request->slogan,
+            'slogan' => $request->slogan,
             'telefone' => $request->telefone,
             'endereco' => $request->endereco
         ]);
+    
 
         //redirecionar o usuário e enviar mensagem
         return redirect()->route('admin.config.index')->with('success', 'Configuração atualizada com sucesso!');

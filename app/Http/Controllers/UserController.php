@@ -7,9 +7,11 @@ use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
+
     //Listar Usuários
     public function index()
     {
@@ -32,7 +34,14 @@ class UserController extends Controller
     //Carregar o Formulário de Cadastro
     public function create()
     {
-        return view('admin.user.create', ['menu' => 'user']);
+
+        // recuperar os papéis
+        $roles = Role::pluck('name')->all();
+
+        return view('admin.user.create', [
+            'menu' => 'user',
+            'roles' => $roles,
+        ]);
     }
 
 
@@ -50,15 +59,27 @@ class UserController extends Controller
             'password' => Hash::make($request->password)
         ]);
 
+        //Cadastrar papel do usuário
+        $user->assignRole($request->roles);
+
         // Redirecionar o usuário, enviar a mensagem de sucesso
         return redirect()->route('admin.user.index', ['user' => $user->id])->with('success', 'Usuário cadastrado com sucesso!');
     }
 
     //Carregar o Formulário de Editar
-    public function edit(Request $request)
+    public function edit(User $user)
     {
-        $user = User::find(1);
-        return view('admin.user.edit', ['user' => $user]);
+        //recuperar papéis
+        $roles = Role::pluck('name')->all();
+
+        //recuperar o papel do usuário
+        $userRoles = $user->roles->pluck('name')->first();
+        return view('admin.user.edit', [
+            'menu' => 'users',
+            'user' => $user,
+            'roles' => $roles,
+            'userRoles' => $userRoles,
+        ]);
     }
 
     //Editar no Banco de Dados
@@ -72,6 +93,9 @@ class UserController extends Controller
             'email' => $request->email,
         ]);
 
+        // editar papel do usuário
+        $user->syncRoles($request->roles);
+
         //redirecionar o usuário e enviar mensagem
         return redirect()->route('admin.user.index')->with('success', 'Usuário atualizaoa com sucesso!');
     }
@@ -83,6 +107,9 @@ class UserController extends Controller
         try {
             // Excluir o registro no Banco de Dados
             $user->delete();
+
+            // remover todos os papéis atribuídos para o usuário
+            $user->syncRoles([]);
 
             /// Redirecionar o usuário, enviar a mensagem de sucesso     
             return redirect()->route('admin.user.index')->with('success', 'Usuário excluído com sucesso!');

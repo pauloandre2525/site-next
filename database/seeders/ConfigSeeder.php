@@ -13,11 +13,13 @@ class ConfigSeeder extends Seeder
      */
     public function run(): void
     {
-               Config::create([
-                'titulo' => 'Título Site',
+        if (!Config::where('titulo', 'Título do Site')->first()) {
+            Config::create([
+                'titulo' => 'Título do Site',
                 'slogan' => 'descrição site',
                 'telefone' => '(75) 99999-9999',
                 'endereco' => 'Rua Tal'
             ]);
         }
     }
+}
