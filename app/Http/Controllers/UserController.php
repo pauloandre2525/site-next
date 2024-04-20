@@ -63,7 +63,7 @@ class UserController extends Controller
         $user->assignRole($request->roles);
 
         // Redirecionar o usuário, enviar a mensagem de sucesso
-        return redirect()->route('admin.user.index', ['user' => $user->id])->with('success', 'Usuário cadastrado com sucesso!');
+        return redirect()->route('admin.user.index', ['menu' => 'user', 'user' => $user->id])->with('success', 'Usuário cadastrado com sucesso!');
     }
 
     //Carregar o Formulário de Editar
@@ -75,7 +75,7 @@ class UserController extends Controller
         //recuperar o papel do usuário
         $userRoles = $user->roles->pluck('name')->first();
         return view('admin.user.edit', [
-            'menu' => 'users',
+            'menu' => 'user',
             'user' => $user,
             'roles' => $roles,
             'userRoles' => $userRoles,

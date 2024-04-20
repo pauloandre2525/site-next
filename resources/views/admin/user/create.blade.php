@@ -5,8 +5,8 @@
 
 <div class="card">
     <div class="card-header">
-
-        <h2>Cadastrar Usuários</h2>
+      Cadastrar Usuários
+    </div>
         <div class="card-body">
             <x-alert />
             <form action="{{ route('admin.user.store') }}" method="POST">
@@ -47,7 +47,7 @@
 
                 <button type="submit" class="btn btn-primary">Cadastrar</button>
             </form>
-        </div>
+        
     </div>
 </div>
 @endsection

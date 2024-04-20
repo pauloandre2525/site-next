@@ -27,7 +27,7 @@ class RoleController extends Controller
 
     public function create()
     {
-        return view('admin.role.create');
+        return view('admin.role.create', ['menu' => 'role']);
     }
 
     public function store()
@@ -37,7 +37,7 @@ class RoleController extends Controller
 
     public function edit()
     {
-        return view('admin.role.edit');
+        return view('admin.role.edit', ['menu' => 'role']);
     }
 
     public function update()

@@ -18,7 +18,7 @@
     <!-- Core theme CSS (includes Bootstrap)-->
 
 
-    @vite(['resources/css/app-site.css', 'resources/js/app.js'])
+    @vite(['resources/css/app-site.css', 'resources/js/app-site.js'])
 
 
 <body id="page-top">

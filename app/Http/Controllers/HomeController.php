@@ -13,7 +13,7 @@ class HomeController extends Controller
 
         // Recuperar os registro do Banco de Dados
         $config = DB::table('config')->first();
-        $banners = Banner::all();
+        $banners = Banner::where('status', 'ativo')->get();
 
         // carregar a VIEW
         return view('site.index', ['config' => $config, 'banners' => $banners]);

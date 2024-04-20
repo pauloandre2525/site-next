@@ -23,7 +23,7 @@ class ConfigController extends Controller
     //Detalhar Configurações
     public function show(Request $request, Config $config)
     {
-        return view('admin.config.show', ['config' => $config]);
+        return view('admin.config.show', ['menu' => 'config', 'config' => $config]);
     }
 
 
@@ -47,7 +47,7 @@ class ConfigController extends Controller
     public function edit(Request $request)
     {
         $config = Config::find(1);
-        return view('admin.config.edit', ['config' => $config]);
+        return view('admin.config.edit', ['menu' => 'config', 'config' => $config]);
     }
 
     //Editar no Banco de Dados

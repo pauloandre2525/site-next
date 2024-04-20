@@ -63,25 +63,30 @@ class BannerController extends Controller
 
 
     //Carregar o Formulário de Editar
-    public function edit(Request $request)
+    public function edit($id)
     {
-        $banner = Banner::find(1);
+        $banner = Banner::find($id);
         return view('admin.banner.edit', ['banner' => $banner]);
     }
 
     //Editar no Banco de Dados
-    public function update(Request $request)
+    public function update(Request $request, Banner $banner)
     {
-        $request->update([
-            'titulo' => $request->titulo,
-            'legenda' => $request->legenda,
-            'imagem' => $request->imagem,
-            'status' => $request->status
-        ]);
+        
+        if ($request->hasFile('imagem')) {
+            $imagem = time() . '.' . $request->imagem->extension();
+            $request->imagem->storeAs('banners', $imagem, 'public');
+            $banner->imagem = $imagem;
+        }
 
-        //redirecionar o usuário e enviar mensagem
-        return redirect()->route('admin.banner.index')->with('success', 'Configuração atualizada com sucesso!');
+        $banner->titulo = $request->titulo;
+        $banner->legenda = $request->legenda;
+        $banner->status = $request->status;
+        $banner->save();
+
+        return redirect()->route('admin.banner.index')->with('success', 'Banner atualizado com sucesso!');
     }
+
 
 
     //Apagar do Banco de Dados

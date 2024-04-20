@@ -24,7 +24,7 @@
                     <th scope="col">Status</th>
                     <th scope="col">Ações</th>
                 </tr>
-            </thead> 
+            </thead>
             <tbody>
                 @foreach ($banners as $banner)
                 <tr>
@@ -42,7 +42,7 @@
                 </tr>
                 @endforeach
             </tbody>
-            
+
         </table>
 
     </div>

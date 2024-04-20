@@ -15,10 +15,10 @@
                 <div class="card shadow-lg my-5">
                     <div class="card-body">
                         <!-- Nested Row within Card Body -->
-                        <div class="col-md-12">
+                        <div class="col-md-12"> 
                             <div class="p-5">
                                 <div>
-                                    <img src="{{ asset('img/logo.png')}}" class="mx-auto d-block mb-5" width="250px">
+                                    <img src="{{ $config->logo }}" class="mx-auto d-block mb-5" width="250px">
                                 </div>
 
                                 <hr>

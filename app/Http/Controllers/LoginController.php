@@ -6,6 +6,7 @@ use App\Http\Requests\LoginRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Permission;
 
 class LoginController extends Controller
@@ -13,8 +14,11 @@ class LoginController extends Controller
     //Login
     public function index()
     {
+        // Recuperar os registro do Banco de Dados
+        $config = DB::table('config')->first(); 
+
         //carregar a VIEW
-        return view('login.index');
+        return view('login.index', ['config' => $config]);
     }
 
     //Processar o login
