@@ -17,6 +17,8 @@ class ConfigSeeder extends Seeder
             Config::create([
                 'titulo' => 'Título do Site',
                 'slogan' => 'descrição site',
+                'logo' => 'storage/logos/logo.png',
+                'favicon' => 'storage/favicon.ico',
                 'telefone' => '(75) 99999-9999',
                 'endereco' => 'Rua Tal'
             ]);

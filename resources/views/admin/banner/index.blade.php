@@ -5,7 +5,7 @@
 
 <div class="card">
     <div class="card-header">
-        Banner Header
+        Banner Topo
         @can('create-banner')
         <a href="{{ route('admin.banner.create') }}" class="btn btn-success btn-sm float-end">Novo</a>
         @endcan

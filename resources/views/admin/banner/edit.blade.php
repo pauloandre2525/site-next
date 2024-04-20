@@ -5,7 +5,7 @@
 
 <div class="card">
     <div class="card-header">
-        Atualizar Banner
+        Atualizar Banner - {{ $banner->titulo }}
     </div>
     <div class="card-body">
         <x-alert />
@@ -29,8 +29,8 @@
             <div class=" mb-3">
                 <label for="status" class="form-label">Status:</label>
                 <select id="status" class="form-select" name="status">
-                    <option value="ativo">Ativo</option>
-                    <option value="inativo">Inativo</option>
+                    <option value="ativo" {{ $banner->status == 'ativo' ? 'selected' : '' }}>Ativo</option>
+                    <option value="inativo" {{ $banner->status == 'inativo' ? 'selected' : '' }}>Inativo</option>
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">Atualizar</button>

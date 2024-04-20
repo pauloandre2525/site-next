@@ -91,6 +91,12 @@
                         @can('index-banner')
                         <a class="collapse-item" href="{{ route('admin.banner.index') }}">Banner Header</a>
                         @endcan
+                        @can('index-servico')
+                        <a class="collapse-item" href="{{ route('admin.servico.index') }}">Serviços</a>
+                        @endcan
+                        @can('index-portifolio')
+                        <a class="collapse-item" href="{{ route('admin.portifolio.index') }}">Portifólio</a>
+                        @endcan
                     </div>
                 </div>
             </li>

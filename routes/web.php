@@ -5,8 +5,10 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PortifolioController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\RolePermissionController;
+use App\Http\Controllers\ServicoController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -87,6 +89,49 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/admindelete-banner/{banner}', [BannerController::class, 'destroy'])
     ->middleware('permission:destroy-banner')
     ->name('admin.banner.delete');
+
+    //AREA SERVIÇOS
+    Route::get('/admin/servico', [ServicoController::class, 'index'])
+    ->middleware('permission:index-servico')
+    ->name('admin.servico.index');
+    Route::get('/admin/show-servico/{servico}', [ServicoController::class, 'show'])
+    ->middleware('permission:show-servico')
+    ->name('admin.servico.show');
+    Route::get('/admin/create-servico', [ServicoController::class, 'create'])
+    ->middleware('permission:create-servico')
+    ->name('admin.servico.create');
+    Route::post('/admin/store-servico', [ServicoController::class, 'store'])
+    ->name('admin.servico.store');
+    Route::get('/admin/edit-servico/{servico}', [ServicoController::class, 'edit'])
+    ->middleware('permission:edit-servico')
+    ->name('admin.servico.edit');
+    Route::put('/admin/update-servico/{servico}', [ServicoController::class, 'update'])
+    ->name('admin.servico.update');
+    Route::delete('/admindelete-servico/{servico}', [ServicoController::class, 'destroy'])
+    ->middleware('permission:destroy-servico')
+    ->name('admin.servico.delete');
+
+
+    //AREA SERVIÇOS
+    Route::get('/admin/portifolio', [PortifolioController::class, 'index'])
+    ->middleware('permission:index-portifolio')
+    ->name('admin.portifolio.index');
+    Route::get('/admin/show-portifolio/{portifolio}', [PortifolioController::class, 'show'])
+    ->middleware('permission:show-portifolio')
+    ->name('admin.portifolio.show');
+    Route::get('/admin/create-portifolio', [PortifolioController::class, 'create'])
+    ->middleware('permission:create-portifolio')
+    ->name('admin.portifolio.create');
+    Route::post('/admin/store-portifolio', [PortifolioController::class, 'store'])
+    ->name('admin.portifolio.store');
+    Route::get('/admin/edit-portifolio/{portifolio}', [PortifolioController::class, 'edit'])
+    ->middleware('permission:edit-portifolio')
+    ->name('admin.portifolio.edit');
+    Route::put('/admin/update-portifolio/{portifolio}', [PortifolioController::class, 'update'])
+    ->name('admin.portifolio.update');
+    Route::delete('/admindelete-portifolio/{portifolio}', [PortifolioController::class, 'destroy'])
+    ->middleware('permission:destroy-portifolio')
+    ->name('admin.portifolio.delete');
 
 
     //GRUPOS DE USUÁRIOS

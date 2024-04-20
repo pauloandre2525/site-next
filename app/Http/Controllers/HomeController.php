@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Banner;
+use App\Models\Portifolio;
+use App\Models\Servico;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -14,9 +16,18 @@ class HomeController extends Controller
         // Recuperar os registro do Banco de Dados
         $config = DB::table('config')->first();
         $banners = Banner::where('status', 'ativo')->get();
+        $servicos = Servico::where('status', 'ativo')->get();
+        $portifolios = Portifolio::where('status', 'ativo')->get();
+        
 
         // carregar a VIEW
-        return view('site.index', ['config' => $config, 'banners' => $banners]);
+        return view(
+            'site.index', 
+            ['config' => $config, 
+            'banners' => $banners, 
+            'servicos' => $servicos, 
+            'portifolios' => $portifolios
+        ]);
 
     }
 

@@ -5,7 +5,7 @@
 
 <div class="card">
     <div class="card-header">
-        Usuários
+        Banner - {{ $banner->titulo }}
         
         @can('edit-banner')
         <a href="{{ route('admin.banner.edit', ['banner' => $banner->id]) }} "class="btn btn-success btn-sm float-end  ml-3">Editar</a>

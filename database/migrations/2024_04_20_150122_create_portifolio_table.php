@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('config', function (Blueprint $table) {
+        Schema::create('portifolio', function (Blueprint $table) {
             $table->id();
-            $table->string('titulo');
-            $table->string('slogan');
-            $table->string('logo');
-            $table->string('favicon');
-            $table->string('telefone');
-            $table->string('endereco');
+            $table->string('nome');
+            $table->text('descricao');
+            $table->string('imagem');
+            $table->string('cliente');
+            $table->string('categoria');
+            $table->string('status');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('config');
+        Schema::dropIfExists('portifolio');
     }
 };
