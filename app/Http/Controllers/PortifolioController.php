@@ -79,8 +79,11 @@ class PortifolioController extends Controller
 
         if ($request->hasFile('imagem')) {
             $imagem = time() . '.' . $request->imagem->extension();
-            $request->imagem->storeAs('portifolios', $imagem, 'public');
-            $portifolio->imagem = $imagem;
+            $path = $request->imagem->storeAs('portifolios', $imagem, 'public');
+
+            // Obtenha o caminho completo da imagem
+            $fullPath = asset('storage/' . $path);
+            $portifolio->imagem = $fullPath;
         }
 
         $portifolio->nome = $request->nome;

@@ -9,6 +9,7 @@ use App\Http\Controllers\PortifolioController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\RolePermissionController;
 use App\Http\Controllers\ServicoController;
+use App\Http\Controllers\SobreController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -132,6 +133,28 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/admindelete-portifolio/{portifolio}', [PortifolioController::class, 'destroy'])
     ->middleware('permission:destroy-portifolio')
     ->name('admin.portifolio.delete');
+
+
+    //AREA SOBRE NÓS
+    Route::get('/admin/sobre', [SobreController::class, 'index'])
+    ->middleware('permission:index-sobre')
+    ->name('admin.sobre.index');
+    Route::get('/admin/show-sobre/{sobre}', [SobreController::class, 'show'])
+    ->middleware('permission:show-sobre')
+    ->name('admin.sobre.show');
+    Route::get('/admin/create-sobre', [SobreController::class, 'create'])
+    ->middleware('permission:create-sobre')
+    ->name('admin.sobre.create');
+    Route::post('/admin/store-sobre', [SobreController::class, 'store'])
+    ->name('admin.sobre.store');
+    Route::get('/admin/edit-sobre/{sobre}', [SobreController::class, 'edit'])
+    ->middleware('permission:edit-sobre')
+    ->name('admin.sobre.edit');
+    Route::put('/admin/update-sobre/{sobre}', [SobreController::class, 'update'])
+    ->name('admin.sobre.update');
+    Route::delete('/admindelete-sobre/{sobre}', [SobreController::class, 'destroy'])
+    ->middleware('permission:destroy-sobre')
+    ->name('admin.sobre.delete');
 
 
     //GRUPOS DE USUÁRIOS

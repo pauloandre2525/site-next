@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Banner;
 use App\Models\Portifolio;
 use App\Models\Servico;
+use App\Models\Sobre;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -18,6 +19,7 @@ class HomeController extends Controller
         $banners = Banner::where('status', 'ativo')->get();
         $servicos = Servico::where('status', 'ativo')->get();
         $portifolios = Portifolio::where('status', 'ativo')->get();
+        $sobres = Sobre::where('status', 'ativo')->get();
         
 
         // carregar a VIEW
@@ -26,7 +28,8 @@ class HomeController extends Controller
             ['config' => $config, 
             'banners' => $banners, 
             'servicos' => $servicos, 
-            'portifolios' => $portifolios
+            'portifolios' => $portifolios,
+            'sobres' => $sobres
         ]);
 
     }

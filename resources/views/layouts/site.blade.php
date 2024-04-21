@@ -23,7 +23,6 @@
 
 <body id="page-top">
     <!-- Navigation-->
-    <p>Data Atual: {{ \Carbon\Carbon::now()->format('d/m/Y H:i:s') }} </p>
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand" href="#page-top"><img src="{{ $config->logo }}" alt="..." /></a>
@@ -66,6 +65,7 @@
     </footer>
     <!-- Portfolio Modals-->
     <!-- Portfolio item 1 modal popup-->
+    @foreach ($portifolios as $portifolio)
     <div class="portfolio-modal modal fade" id="portfolioModal{{ $portifolio->id }}" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -100,6 +100,7 @@
             </div>
         </div>
     </div>
+    @endforeach
     
 
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>

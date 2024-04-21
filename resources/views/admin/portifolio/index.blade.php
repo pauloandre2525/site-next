@@ -47,7 +47,6 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $portifolios->links() }}
     </div>
 </div>
 @endsection

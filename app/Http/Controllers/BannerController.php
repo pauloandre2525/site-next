@@ -75,8 +75,11 @@ class BannerController extends Controller
         
         if ($request->hasFile('imagem')) {
             $imagem = time() . '.' . $request->imagem->extension();
-            $request->imagem->storeAs('banners', $imagem, 'public');
-            $banner->imagem = $imagem;
+            $path = $request->imagem->storeAs('banners', $imagem, 'public');
+
+            // Obtenha o caminho completo da imagem
+            $fullPath = asset('storage/' . $path);
+            $banner->imagem = $fullPath;
         }
 
         $banner->titulo = $request->titulo;
