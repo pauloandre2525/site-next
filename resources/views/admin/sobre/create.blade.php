@@ -15,7 +15,7 @@
             @csrf
             @method('POST')
             <div class="mb-3">
-                <label for="titulo" class="form-label">Período:</label>
+                <label for="periodo" class="form-label">Período:</label>
                 <input type="text" class="form-control" id="periodo" name="periodo" style="text-transform:uppercase">
             </div>
             <div class="mb-3">

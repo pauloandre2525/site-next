@@ -20,9 +20,9 @@
                     <th scope="col">ID</th>
                     <th scope="col">Título</th>
                     <th scope="col">Legenda</th>
-                    <th scope="col">Imagem</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Ações</th>
+                    <th scope="col" style="text-align: center;">Imagem</th>
+                    <th scope="col" style="text-align: center;">Status</th>
+                    <th scope="col" style="text-align: center;">Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,9 +31,15 @@
                     <th scope="row">{{ $banner->id }}</th>
                     <td>{{ $banner->titulo }}</td>
                     <td>{{ $banner->legenda }}</td>
-                    <td><img src="{{ $banner->imagem }}" width="100px"> </td>
-                    <td>{{ $banner->status }}</td>
-                    <td>
+                    <td style="text-align: center;"><img src="{{ $banner->imagem }}" width="100px"> </td>
+                    <td style="text-align: center;">
+                        @if ($banner->status == 'ativo')
+                        <div class="badge rounded-pill text-bg-success">{{ $banner->status }}</div>
+                        @else
+                        <div class="badge rounded-pill text-bg-danger">{{ $banner->status }}</div>
+                        @endif
+                    </td>
+                    <td style="text-align: center;">
                         <a href="{{ route('admin.banner.show', ['banner' => $banner->id]) }}" class="btn btn-info btn-sm" title="Visualizar"><i class="fa-solid fa-eye"></i></a>
                         @can('edit-banner')
                         <a href="{{ route('admin.banner.edit', ['banner' => $banner->id]) }}" class="btn btn-warning btn-sm" title="Editar"><i class="fa-solid fa-pen-to-square"></i></a>

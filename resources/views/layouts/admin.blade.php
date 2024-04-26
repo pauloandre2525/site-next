@@ -79,30 +79,66 @@
             @endcan
 
 
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
             <!-- Nav Item - Site -->
+            <div class="sidebar-heading">
+                Configurações do Site
+            </div>
+
+            <!-- Nav Item - Site -->
+            @can('index-banner')
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Site</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Configurações do Site:</h6>
-                        @can('index-banner')
-                        <a class="collapse-item" href="{{ route('admin.banner.index') }}">Banner Header</a>
-                        @endcan
-                        @can('index-servico')
-                        <a class="collapse-item" href="{{ route('admin.servico.index') }}">Serviços</a>
-                        @endcan
-                        @can('index-portifolio')
-                        <a class="collapse-item" href="{{ route('admin.portifolio.index') }}">Portifólio</a>
-                        @endcan
-                        @can('index-sobre')
-                        <a class="collapse-item" href="{{ route('admin.sobre.index') }}">Sobre Nós</a>
-                        @endcan
-                    </div>
-                </div>
+                <a class="nav-link" href="{{ route('admin.banner.index') }}">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Banner Header</span></a>
             </li>
+            @endcan
+
+            @can('index-servico')
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.servico.index') }}">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Serviços</span></a>
+            </li>
+            @endcan
+
+
+            @can('index-portifolio')
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.portifolio.index') }}">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Portifólio</span></a>
+            </li>
+            @endcan
+
+            @can('index-sobre')
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.sobre.index') }}">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Sobre Nós</span></a>
+            </li>
+            @endcan
+
+            @can('index-equipe')
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.equipe.index') }}">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Equipe</span></a>
+            </li>
+            @endcan
+
+            @can('index-contato')
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.contato.index') }}">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Contatos</span></a>
+            </li>
+            @endcan
+
+
+
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -111,8 +147,6 @@
             <div class="sidebar-heading">
                 Addons
             </div>
-
-
 
             <!-- Nav Item - Sair -->
             <li class="nav-item">

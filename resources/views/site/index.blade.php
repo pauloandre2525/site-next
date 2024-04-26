@@ -5,10 +5,10 @@
 
 <!-- Masthead-->
 <header class="">
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div id="carouselBanner" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             @foreach ($banners as $key => $banner)
-            <li data-target="#carouselExampleIndicators" data-slide-to="{{ $key }}" class="{{ $key == 0 ? 'active' : '' }}"></li>
+            <li data-target="#carouselBanner" data-slide-to="{{ $key }}" class="{{ $key == 0 ? 'active' : '' }}"></li>
             @endforeach
         </ol>
         <div class="carousel-inner">
@@ -22,11 +22,11 @@
             </div>
             @endforeach
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <a class="carousel-control-prev" href="#carouselBanner" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Anterior</span>
         </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <a class="carousel-control-next" href="#carouselBanner" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Próximo</span>
         </a>
@@ -107,7 +107,7 @@
                 </div>
             </li>
             @endforeach
-            
+
         </ul>
     </div>
 </section>
@@ -115,41 +115,73 @@
 <section class="page-section bg-light" id="equipe">
     <div class="container">
         <div class="text-center">
-            <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
+            <h2 class="section-heading text-uppercase">Nossa Equipe</h2>
             <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
         </div>
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="team-member">
-                    <img class="mx-auto rounded-circle" src="assets/img/team/1.jpg" alt="..." />
-                    <h4>Parveen Anand</h4>
-                    <p class="text-muted">Lead Designer</p>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Twitter Profile"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+        <!-- para telas grandes -->
+        <div id="carouselEquipe" class="carousel slide d-none d-sm-block" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                @foreach ($equipes->chunk(3) as $chunk)
+                <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+                    <div class="row">
+                        @foreach ($chunk as $equipe)
+                        <div class="col-lg-4">
+                            <div class="team-member">
+                                <img class="mx-auto rounded-circle" src="{{ $equipe->imagem }}" alt="..." />
+                                <h4 style="text-transform: capitalize">{{ $equipe->nome }}</h4>
+                                <p class="text-muted">{{ $equipe->funcao }}</p>
+                                <a class="btn btn-dark btn-social mx-2" href="https://api.whatsapp.com/send?phone=55+{{$equipe->whatsapp}}" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                                <a class="btn btn-dark btn-social mx-2" href="{{ $equipe->facebook }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-dark btn-social mx-2" href="{{ $equipe->instagram }}" target="_blank"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
                 </div>
+                @endforeach
             </div>
-            <div class="col-lg-4">
-                <div class="team-member">
-                    <img class="mx-auto rounded-circle" src="assets/img/team/2.jpg" alt="..." />
-                    <h4>Diana Petersen</h4>
-                    <p class="text-muted">Lead Marketer</p>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen Twitter Profile"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="team-member">
-                    <img class="mx-auto rounded-circle" src="assets/img/team/3.jpg" alt="..." />
-                    <h4>Larry Parker</h4>
-                    <p class="text-muted">Lead Developer</p>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Twitter Profile"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselEquipe" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselEquipe" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
+        <!-- fim telas grandes -->
+
+        <!-- para telas pequenas -->
+        <div id="carouselEquipe" class="carousel slide d-lg-none d-xl-none" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                @foreach ($equipes as $equipe)
+                <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="team-member">
+                                <img class="mx-auto rounded-circle" src="{{ $equipe->imagem }}" alt="..." />
+                                <h4 style="text-transform: capitalize">{{ $equipe->nome }}</h4>
+                                <p class="text-muted">{{ $equipe->funcao }}</p>
+                                <a class="btn btn-dark btn-social mx-2" href="https://api.whatsapp.com/send?phone=55+{{$equipe->whatsapp}}" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                                <a class="btn btn-dark btn-social mx-2" href="{{ $equipe->facebook }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-dark btn-social mx-2" href="{{ $equipe->instagram }}" target="_blank"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselEquipe" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselEquipe" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <!-- fim para elas pequenas -->
+
         <div class="row">
             <div class="col-lg-8 mx-auto text-center">
                 <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
@@ -176,69 +208,64 @@
         </div>
     </div>
 </div>
+
 <!-- Contact-->
 <section class="page-section" id="contato">
     <div class="container">
         <div class="text-center">
-            <h2 class="section-heading text-uppercase">Contact Us</h2>
+            <h2 class="section-heading text-uppercase">Fale conosco</h2>
             <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
         </div>
+
         <!-- * * * * * * * * * * * * * * *-->
-        <!-- * * SB Forms Contact Form * *-->
-        <!-- * * * * * * * * * * * * * * *-->
-        <!-- This form is pre-integrated with SB Forms.-->
-        <!-- To make this form functional, sign up at-->
-        <!-- https://startbootstrap.com/solution/contact-forms-->
-        <!-- to get an API token!-->
-        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+        <!-- * * Formulário de Contato * *-->
+
+        <form id="contactForm" action="{{ route('contato') }}" method="POST" >
+            @csrf
+            @method('POST')
             <div class="row align-items-stretch mb-5">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <!-- Name input-->
-                        <input class="form-control" id="name" type="text" placeholder="Your Name *" data-sb-validations="required" />
-                        <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                        <!-- Nome input-->
+                        <input class="form-control" id="nome" name="nome" type="text" placeholder="Seu Nome *" required />
                     </div>
                     <div class="form-group">
                         <!-- Email address input-->
-                        <input class="form-control" id="email" type="email" placeholder="Your Email *" data-sb-validations="required,email" />
-                        <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                        <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                        <input class="form-control" id="email" name="email" type="email" placeholder="Seu Email *" required />
                     </div>
                     <div class="form-group mb-md-0">
                         <!-- Phone number input-->
-                        <input class="form-control" id="phone" type="tel" placeholder="Your Phone *" data-sb-validations="required" />
-                        <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+                        <input class="form-control" id="telefone" name="telefone" type="tel" placeholder="Seu Telefone *" required />
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group form-group-textarea mb-md-0">
                         <!-- Message input-->
-                        <textarea class="form-control" id="message" placeholder="Your Message *" data-sb-validations="required"></textarea>
-                        <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                        <textarea class="form-control" id="texto" name="texto" placeholder="Sua Mensagem *" required></textarea>
                     </div>
                 </div>
             </div>
-            <!-- Submit success message-->
-            <!---->
-            <!-- This is what your users will see when the form-->
-            <!-- has successfully submitted-->
-            <div class="d-none" id="submitSuccessMessage">
-                <div class="text-center text-white mb-3">
-                    <div class="fw-bolder">Form submission successful!</div>
-                    To activate this form, sign up at
-                    <br />
-                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                </div>
+
+            <!-- Mensagem de sucesso -->
+            @if (session('message'))
+            <div class="alert alert-success">
+                {{ session('message') }}
             </div>
-            <!-- Submit error message-->
-            <!---->
-            <!-- This is what your users will see when there is-->
-            <!-- an error submitting the form-->
-            <div class="d-none" id="submitErrorMessage">
-                <div class="text-center text-danger mb-3">Error sending message!</div>
+            @endif
+
+            <!-- Mensagens de erro -->
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
             </div>
+            @endif
+
             <!-- Submit Button-->
-            <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase disabled" id="submitButton" type="submit">Send Message</button></div>
+            <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase" type="submit">Enviar Menssagem</button></div>
         </form>
     </div>
 </section>

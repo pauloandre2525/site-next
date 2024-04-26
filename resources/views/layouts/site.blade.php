@@ -18,6 +18,7 @@
     <!-- Core theme CSS (includes Bootstrap)-->
 
 
+
     @vite(['resources/css/app-site.css', 'resources/js/app-site.js'])
 
 
@@ -101,7 +102,7 @@
         </div>
     </div>
     @endforeach
-    
+
 
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 
@@ -113,6 +114,8 @@
 
     <!-- JavaScript do Bootstrap -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  
+    
 
 </body>
 

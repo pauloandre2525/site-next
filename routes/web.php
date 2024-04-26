@@ -3,6 +3,8 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\ConfigController;
+use App\Http\Controllers\ContatoController;
+use App\Http\Controllers\EquipeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PortifolioController;
@@ -14,6 +16,8 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/contato', [HomeController::class, 'contato'])->name('contato');
+Route::post('/contato', [HomeController::class, 'postContato'])->name('postContato');
 
 
 //LOGIN
@@ -155,6 +159,38 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/admindelete-sobre/{sobre}', [SobreController::class, 'destroy'])
     ->middleware('permission:destroy-sobre')
     ->name('admin.sobre.delete');
+
+
+    //AREA EQUIPE
+    Route::get('/admin/equipe', [EquipeController::class, 'index'])
+    ->middleware('permission:index-equipe')
+    ->name('admin.equipe.index');
+    Route::get('/admin/show-equipe/{equipe}', [EquipeController::class, 'show'])
+    ->middleware('permission:show-equipe')
+    ->name('admin.equipe.show');
+    Route::get('/admin/create-equipe', [EquipeController::class, 'create'])
+    ->middleware('permission:create-equipe')
+    ->name('admin.equipe.create');
+    Route::post('/admin/store-equipe', [EquipeController::class, 'store'])
+    ->name('admin.equipe.store');
+    Route::get('/admin/edit-equipe/{equipe}', [EquipeController::class, 'edit'])
+    ->middleware('permission:edit-equipe')
+    ->name('admin.equipe.edit');
+    Route::put('/admin/update-equipe/{equipe}', [EquipeController::class, 'update'])
+    ->name('admin.equipe.update');
+    Route::delete('/admindelete-equipe/{equipe}', [EquipeController::class, 'destroy'])
+    ->middleware('permission:destroy-equipe')
+    ->name('admin.equipe.delete');
+
+
+    //AREA CONTATO
+    Route::get('/admin/contato', [ContatoController::class, 'index'])
+    ->middleware('permission:index-contato')
+    ->name('admin.contato.index');
+    Route::get('/admin/show-contato/{contato}', [ContatoController::class, 'show'])
+    ->middleware('permission:show-contato')
+    ->name('admin.contato.show');
+
 
 
     //GRUPOS DE USUÁRIOS

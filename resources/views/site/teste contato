@@ -1,0 +1,127 @@
+<!-- Contact-->
+<section class="page-section" id="contato">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Fale Conosco</h2>
+            <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+        </div>
+        <!-- Mensagem de sucesso -->
+        @if (session('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+        @endif
+
+        <!-- Mensagens de erro -->
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+        <form id="contactForm" action="{{ route('contato') }}" method="POST">
+            @csrf
+            @method('POST')
+            <div class="row align-items-stretch mb-5">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <!-- Name input-->
+                        <input class="form-control" id="name" name="nome" type="text" placeholder="Seu Nome *" required />
+                        @error('nome')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <!-- Email address input-->
+                        <input class="form-control" id="email" name="email" type="email" placeholder="Seu Email *" required />
+                        @error('email')
+                        <div class="invalid-feedback">O email é Obrigatório!</div>
+                        @enderror
+                    </div>
+                    <div class="form-group mb-md-0">
+                        <!-- Phone number input-->
+                        <input class="form-control" id="telefone" name="telefone" type="tel" placeholder="Seu Telefone *" required />
+                        @error('telefone')
+                        <div class="invalid-feedback">Um Número de Telefone é Obrigatório!</div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group form-group-textarea mb-md-0">
+                        <!-- Message input-->
+                        <textarea class="form-control" id="message" name="texto" placeholder="Sua Mensagem *" required></textarea>
+                        @error('texto')
+                        <div class="invalid-feedback">A Mensagem é Obrigatória.</div>
+                        @enderror
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+<form id="contactForm" action="{{ route('contato') }}" method="POST" data-sb-form-api-token="API_TOKEN">
+    @csrf
+    @method('POST')
+    <div class="row align-items-stretch mb-5">
+        <div class="col-md-6">
+            <div class="form-group">
+                <!-- Nome input-->
+                <input class="form-control" id="name" name="nome" type="text" placeholder="Seu Nome *" data-sb-validations="required" />
+                <div class="invalid-feedback" data-sb-feedback="name:required">É necessário informar o Seu Nome.</div>
+            </div>
+            <div class="form-group">
+                <!-- Email address input-->
+                <input class="form-control" id="email" name="email" type="email" placeholder="Seu Email *" data-sb-validations="required,email" />
+                <div class="invalid-feedback" data-sb-feedback="email:required">É necessário informar o Email.</div>
+                <div class="invalid-feedback" data-sb-feedback="email:email">Informe um email válido.</div>
+            </div>
+            <div class="form-group mb-md-0">
+                <!-- Phone number input-->
+                <input class="form-control" id="phone" name="telefone" type="tel" placeholder="Seu Telefone *" data-sb-validations="required" />
+                <div class="invalid-feedback" data-sb-feedback="phone:required">É necessário um número de telefone.</div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group form-group-textarea mb-md-0">
+                <!-- Message input-->
+                <textarea class="form-control" id="message" name="texto" placeholder="Sua Mensagem *" data-sb-validations="required"></textarea>
+                <div class="invalid-feedback" data-sb-feedback="message:required">Uma mensagem é necessária.</div>
+            </div>
+        </div>
+    </div>
+    <!-- Submit success message-->
+    <!---->
+    <!-- This is what your users will see when the form-->
+    <!-- has successfully submitted-->
+    <div class="d-none" id="submitSuccessMessage">
+        <div class="text-center text-white mb-3">
+            <div class="fw-bolder">Mensagem enviada com sucesso!</div>
+        </div>
+    </div>
+    <!-- Submit error message-->
+    <!---->
+    <!-- This is what your users will see when there is-->
+    <!-- an error submitting the form-->
+    <div class="d-none" id="submitErrorMessage">
+        <div class="text-center text-danger mb-3">Erro ao enviar mensagem!</div>
+    </div>
+    <!-- Submit Button-->
+    <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase disabled" id="submitButton" type="submit">Enviar Mensagem</button></div>
+</form>
