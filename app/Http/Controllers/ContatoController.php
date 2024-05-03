@@ -13,7 +13,7 @@ class ContatoController extends Controller
     {
 
         // Recuperar os registro do Banco de Dados
-        $contato = Contato::orderBy('id', 'desc')->paginate(2);
+        $contato = Contato::orderBy('id', 'desc')->paginate(10);
 
         // carregar a VIEW
         return view('admin.contato.index', ['menu' => 'contato', 'contatos' => $contato]);
