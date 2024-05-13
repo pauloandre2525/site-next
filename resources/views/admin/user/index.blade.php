@@ -36,7 +36,9 @@
                         @endforelse
                     </td>
                     <td>
+                        
                         <a href="{{ route('admin.user.show', ['user' => $user->id]) }}" class="btn btn-info btn-sm" title="Visualizar"><i class="fa-solid fa-eye"></i></a>
+                        
                         @can('edit-user')
                         <a href="{{ route('admin.user.edit', ['user' => $user->id]) }}" class="btn btn-warning btn-sm" title="Editar"><i class="fa-solid fa-pen-to-square"></i></a>
                         @endcan

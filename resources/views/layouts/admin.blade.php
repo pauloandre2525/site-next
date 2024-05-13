@@ -54,12 +54,14 @@
 
 
             <!-- Nav Item - Pages Collapse Menu -->
+            @can('index-config')
             <li class="nav-item">
                 <a @class(['nav-link', 'active'=> isset($menu) && $menu == 'config'])class="nav-link" href="{{ route('admin.config.index') }}">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Configurações</span>
                 </a>
             </li>
+            @endcan
             @can('index-role')
             <li class="nav-item">
                 <a @class(['nav-link', 'active'=> isset($menu) && $menu == 'role'])class="nav-link" href="{{ route('admin.role.index') }}">
@@ -86,6 +88,7 @@
             <div class="sidebar-heading">
                 Configurações do Site
             </div>
+            
 
             <!-- Nav Item - Site -->
             @can('index-banner')
