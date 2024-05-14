@@ -47,16 +47,17 @@ class SobreController extends Controller
 
         $imagem = time() . '.' . $request->imagem->extension();
 
-        $path = $request->imagem->storeAs('sobres', $imagem, 'public');
+        // Mova a imagem para a pasta 'public/storage/sobres' no seu projeto
+        $request->imagem->move(public_path('storage/sobres'), $imagem);
 
-        // Obtenha o caminho completo da imagem
-        $fullPath = asset('storage/' . $path);
+        // O caminho da imagem será 'storage/sobres/' concatenado com o nome da imagem
+        $path = 'storage/sobres/' . $imagem;
 
         $sobre = Sobre::create([
             'periodo' => $request->periodo,
             'titulo' => $request->titulo,
             'descricao' => $request->descricao,
-            'imagem' => $fullPath,
+            'imagem' => $path,
             'posicaoimagem' => $request->posicaoimagem,
             'status' => $request->status,
         ]);
@@ -79,12 +80,13 @@ class SobreController extends Controller
 
         if ($request->hasFile('imagem')) {
             $imagem = time() . '.' . $request->imagem->extension();
-            $path = $request->imagem->storeAs('sobres', $imagem, 'public');
-            $sobre->imagem = $imagem;
 
-            // Obtenha o caminho completo da imagem
-            $fullPath = asset('storage/' . $path);
-            $sobre->imagem = $fullPath;
+            // Mova a imagem para a pasta 'public/storage/sobres' no seu projeto
+            $request->imagem->move(public_path('storage/sobres'), $imagem);
+
+            // O caminho da imagem será 'storage/sobres/' concatenado com o nome da imagem
+            $path = 'storage/sobres/' . $imagem;
+            $sobre->imagem = $path;
         }
 
         $sobre->periodo = $request->periodo;

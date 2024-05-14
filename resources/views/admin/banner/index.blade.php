@@ -31,7 +31,7 @@
                     <th scope="row">{{ $banner->id }}</th>
                     <td>{{ $banner->titulo }}</td>
                     <td>{{ $banner->legenda }}</td>
-                    <td style="text-align: center;"><img src="{{ $banner->imagem }}" width="100px"> </td>
+                    <td style="text-align: center;"><img src="{{ asset($banner->imagem) }}" width="100px"> </td>
                     <td style="text-align: center;">
                         @if ($banner->status == 'ativo')
                         <div class="badge rounded-pill text-bg-success">{{ $banner->status }}</div>
