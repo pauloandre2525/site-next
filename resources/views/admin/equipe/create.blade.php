@@ -34,15 +34,15 @@
             </div>
             <div class="mb-3">
                 <label for="whatsapp" class="form-label">Whatsapp:</label>
-                <input type="text" class="form-control" id="whatsapp" name="whatsapp">
+                <input type="text" class="form-control" id="whatsapp" name="whatsapp" value="#">
             </div>
             <div class="mb-3">
                 <label for="facebook" class="form-label">Facebook:</label>
-                <input type="text" class="form-control" id="facebook" name="facebook">
+                <input type="text" class="form-control" id="facebook" name="facebook" value="#">
             </div>
             <div class="mb-3">
                 <label for="instagram" class="form-label">Instagram:</label>
-                <input type="text" class="form-control" id="instagram" name="instagram">
+                <input type="text" class="form-control" id="instagram" name="instagram" value="#">
             </div>
             <div class="mb-3">
                 <label for="status" class="form-label">Status:</label>
