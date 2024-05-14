@@ -35,7 +35,13 @@
                         <i class="{{ $servico->imagem }}"></i>
                         <!-- <img src="{{ $servico->imagem }}" width="100px"> -->
                     </td>
-                    <td>{{ $servico->status }}</td>
+                    <td style="text-align: center;">
+                        @if ($servico->status == 'ativo')
+                        <div class="badge rounded-pill text-bg-success">{{ $servico->status }}</div>
+                        @else
+                        <div class="badge rounded-pill text-bg-danger">{{ $servico->status }}</div>
+                        @endif
+                    </td>
                     <td>
                         <a href="{{ route('admin.servico.show', ['servico' => $servico->id]) }}" class="btn btn-info btn-sm" title="Visualizar"><i class="fa-solid fa-eye"></i></a>
                         @can('edit-servico')

@@ -48,15 +48,16 @@ class EquipeController extends Controller
 
         $imagem = time() . '.' . $request->imagem->extension();
 
-        $path = $request->imagem->storeAs('equipes', $imagem, 'public');
+        // Mova a imagem para a pasta 'public/storage/equipes' no seu projeto
+        $request->imagem->move(public_path('storage/equipes'), $imagem);
 
-        // Obtenha o caminho completo da imagem
-        $fullPath = asset('storage/' . $path);
+        // O caminho da imagem será 'storage/equipes/' concatenado com o nome da imagem
+        $path = 'storage/equipes/' . $imagem;
 
         $equipe = Equipe::create([
             'nome' => $request->nome,
             'funcao' => $request->funcao,
-            'imagem' => $fullPath,
+            'imagem' => $path,
             'whatsapp' => $request->whatsapp,
             'facebook' => $request->facebook,
             'instagram' => $request->instagram,
@@ -81,12 +82,13 @@ class EquipeController extends Controller
 
         if ($request->hasFile('imagem')) {
             $imagem = time() . '.' . $request->imagem->extension();
-            $path = $request->imagem->storeAs('equipes', $imagem, 'public');
-            $equipe->imagem = $imagem;
 
-            // Obtenha o caminho completo da imagem
-            $fullPath = asset('storage/' . $path);
-            $equipe->imagem = $fullPath;
+            // Mova a imagem para a pasta 'public/storage/equipes' no seu projeto
+            $request->imagem->move(public_path('storage/equipes'), $imagem);
+
+            // O caminho da imagem será 'storage/equipes/' concatenado com o nome da imagem
+            $path = 'storage/equipes/' . $imagem;
+            $equipe->imagem = $path;
         }
 
         $equipe->nome = $request->nome;

@@ -22,8 +22,8 @@
                     <th scope="col">Função</th>
                     <th scope="col">Imagem</th>
                     <th scope="col">Whatsapp</th>
-                    <th scope="col">Facebook</th>
-                    <th scope="col">Instagram</th>
+                    <!-- <th scope="col">Facebook</th>
+                    <th scope="col">Instagram</th> -->
                     <th scope="col">Status</th>
                     <th scope="col">Ações</th>
                 </tr>
@@ -34,11 +34,17 @@
                     <th scope="row">{{ $equipe->id }}</th>
                     <td style="text-transform: capitalize">{{ $equipe->nome }}</td>
                     <td>{{ $equipe->funcao }}</td>
-                    <td><img src="{{ $equipe->imagem }}" width="100px"> </td>
+                    <td><img src="{{ asset($equipe->imagem) }}" width="100px"> </td>
                     <td>{{ $equipe->whatsapp }}</td>
-                    <td>{{ $equipe->facebook }}</td>
-                    <td>{{ $equipe->instagram }}</td>
-                    <td>{{ $equipe->status }}</td>
+                    <!-- <td>{{ $equipe->facebook }}</td>
+                    <td>{{ $equipe->instagram }}</td> -->
+                    <td style="text-align: center;">
+                        @if ($equipe->status == 'ativo')
+                        <div class="badge rounded-pill text-bg-success">{{ $equipe->status }}</div>
+                        @else
+                        <div class="badge rounded-pill text-bg-danger">{{ $equipe->status }}</div>
+                        @endif
+                    </td>
                     <td>
                         <a href="{{ route('admin.equipe.show', ['equipe' => $equipe->id]) }}" class="btn btn-info btn-sm" title="Visualizar"><i class="fa-solid fa-eye"></i></a>
                         @can('edit-equipe')

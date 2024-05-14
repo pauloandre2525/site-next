@@ -31,7 +31,7 @@
             <dd class="col-sm-10">{{ $banner->legenda }}</dd>
 
             <dt class="col-sm-2">Imagem</dt>
-            <dd class="col-sm-10"><img src="{{ $banner->imagem }}" width="200px"> </td></dd>
+            <dd class="col-sm-10"><img src="{{ asset($banner->imagem) }}" width="200px"> </td></dd>
 
             <dt class="col-sm-2">Status</dt>
             <dd class="col-sm-10">{{ $banner->status }}</dd>
