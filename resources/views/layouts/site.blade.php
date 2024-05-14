@@ -60,7 +60,7 @@
                 </div>
                 <div class="col-lg-5 text-lg-end">
 
-                    <a class="link-dark text-decoration-none text-align-center" href="#!">Desenvolvido por <b>NEXT Soluções WEB</a>
+                    <a class="link-dark text-decoration-none text-align-center" href="https://nextsolucoesweb.com.br/" target="_blank">Desenvolvido por <b>NEXT Soluções WEB</a>
                 </div>
             </div>
         </div>

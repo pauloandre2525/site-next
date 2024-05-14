@@ -42,12 +42,12 @@
                                     </button>
                                 </form>
                                 <hr>
-                                <div class="text-center">
+                                <!-- <div class="text-center">
                                     <a class="small" href="forgot-password.html">Esqueceu sua senha?</a>
                                 </div>
                                 <div class="text-center">
                                     <a class="small" href="register.html">Criar conta!</a>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>

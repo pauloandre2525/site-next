@@ -14,7 +14,7 @@
         <div class="carousel-inner">
             @foreach ($banners as $key => $banner)
             <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                <img src="{{ $banner->imagem }}" class="d-block w-100" alt="{{ $banner->titulo }}">
+                <img src="{{ $banner->imagem }}" class="d-block w-100 img-banner" alt="{{ $banner->titulo }}">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>{{ $banner->titulo }}</h5>
                     <p>{{ $banner->legenda }}</p>
@@ -69,6 +69,7 @@
             </div>
         </div>
     </section>
+
     <!-- Portfolio Grid-->
     <section class="page-section bg-light" id="portfolio">
         <div class="container">
@@ -85,7 +86,7 @@
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="{{ $portifolio->imagem }}" alt="..." />
+                            <img class="img-portifolio" src="{{ $portifolio->imagem }}" alt="..." />
                         </a>
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading" style="text-transform:uppercase">{{ $portifolio->nome }}</div>

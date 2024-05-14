@@ -88,7 +88,7 @@
             <div class="sidebar-heading">
                 Configurações do Site
             </div>
-            
+
 
             <!-- Nav Item - Site -->
             @can('index-banner')
@@ -384,7 +384,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Desenvolvido por <a href="https://nextsolucoesweb.com.br/" target="_blank"><strong>Next Soluções WEB</strong></a></span>
                     </div>
                 </div>
             </footer>
