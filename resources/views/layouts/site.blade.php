@@ -10,16 +10,17 @@
     <title>:: {{ $config->titulo }} ::</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href={{ $config->favicon }} />
+
     <!-- Font Awesome icons (free version)-->
-    <!-- <script src="https://use.fontawesome.com/releases/v6.5.2/js/all.js" crossorigin="anonymous"></script> -->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/carousel.css') }}" rel="stylesheet" />
 
 
-
-    @vite(['resources/css/app-site.css', 'resources/js/app-site.js'])
 
 
 <body id="page-top">
@@ -60,7 +61,7 @@
                 </div>
                 <div class="col-lg-5 text-lg-end">
 
-                    <a class="link-dark text-decoration-none text-align-center" href="#!">Desenvolvido por <b>NEXT Soluções WEB</a>
+                    <a class="link-dark text-decoration-none text-align-center" href="https://nextsolucoesweb.com.br/" target="_blanck">Desenvolvido por <b>NEXT Soluções WEB</a>
                 </div>
             </div>
         </div>
@@ -105,18 +106,16 @@
     @endforeach
 
 
+    <!-- Core theme JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js//bootstrap.bundle.js') }}"></script>
+    <script src="{{ asset('js/jquery.easing.js') }}"></script> -->
+    <script src="{{ asset('js/scripts.js') }}"></script>
+    <!-- * *                               SB Forms JS                               * *-->
+    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-
-    <!-- jQuery (necessário para os plugins JavaScript do Bootstrap) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-
-    <!-- Popper.js (necessário para tooltips e popovers) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-
-    <!-- JavaScript do Bootstrap -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-
 
 </body>
 
