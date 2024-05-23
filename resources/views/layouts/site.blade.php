@@ -27,18 +27,19 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="#page-top"><img src="{{ $config->logo }}" alt="..." /></a>
+            <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ $config->logo }}" alt="..." /></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
                 <i class="fas fa-bars ms-1"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="#servicos">Serviços</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#portfolio">Portifólio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#sobre">Sobre Nós</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#equipe">Equipe</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ asset('/#servicos') }}">Serviços</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ asset('/#portfolio') }}">Portifólio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('blog') }}">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ asset('/#sobre') }}">Sobre Nós</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ asset('/#equipe') }}">Equipe</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ asset('/#contato') }}">Contato</a></li>
                 </ul>
             </div>
         </div>

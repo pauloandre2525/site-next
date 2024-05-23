@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Banner;
+use App\Models\Blog;
 use App\Models\Contato;
 use App\Models\Equipe;
 use App\Models\Portifolio;
@@ -26,20 +27,61 @@ class HomeController extends Controller
         $portifolios = Portifolio::where('status', 'ativo')->get();
         $sobres = Sobre::where('status', 'ativo')->get();
         $equipes = Equipe::where('status', 'ativo')->get();
-        
+        $blogs = Blog::all();
+
 
         // carregar a VIEW
         return view(
-            'site.index', 
-            ['config' => $config, 
-            'banners' => $banners, 
-            'servicos' => $servicos, 
-            'portifolios' => $portifolios,
-            'sobres' => $sobres,
-            'equipes' => $equipes
-        ]);
-
+            'site.index',
+            [
+                'config' => $config,
+                'banners' => $banners,
+                'servicos' => $servicos,
+                'portifolios' => $portifolios,
+                'sobres' => $sobres,
+                'equipes' => $equipes,
+                'blogs' => $blogs,
+            ]
+        );
     }
+
+
+    public function show()
+    {
+        // Busca a postagem do blog pelo ID
+        $config = DB::table('config')->first();
+        $portifolios = Portifolio::where('status', 'ativo')->get();
+        $blogs = Blog::all();
+
+        // Retorna a view da postagem individual com a postagem
+        return view(
+            'site.blog',
+            [
+                'config' => $config,
+                'portifolios' => $portifolios,
+                'blogs' => $blogs
+            ]
+        );
+    }
+
+    public function blogshow($slug)
+    {
+        // Busca a postagem do blog pelo ID
+        $config = DB::table('config')->first();
+        $portifolios = Portifolio::where('status', 'ativo')->get();
+        $blog = Blog::where('slug', $slug)->firstOrFail();
+
+        // Retorna a view da postagem individual com a postagem
+        return view(
+            'site.blogshow',
+            [
+                'config' => $config,
+                'portifolios' => $portifolios
+            ],
+            compact('blog')
+        );
+    }
+
 
     public function contato()
     {
@@ -69,9 +111,8 @@ class HomeController extends Controller
             return redirect('/#contato')->with('message', 'Mensagem enviada com sucesso!');
         }
         return redirect('/#contato')
-        ->withInput()
-        ->withErrors($validation)
-        ->with('message', 'Erro! Preencha todos os campos corretamente.');
+            ->withInput()
+            ->withErrors($validation)
+            ->with('message', 'Erro! Preencha todos os campos corretamente.');
     }
-
 }

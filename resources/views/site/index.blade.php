@@ -36,9 +36,6 @@
 
 <! --- ******************************************* ---->
 
-
-
-
     <!-- Servicos-->
     <section class="page-section" id="servicos">
 
@@ -47,7 +44,7 @@
                 <h2 class="section-heading text-uppercase">Serviços</h2>
                 <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
             </div>
-            <div class="row text-center">
+            <div class="row justify-content-center text-center">
                 @foreach ($servicos as $key => $servico)
                 <div class="col-md-3">
                     <span class="fa-stack fa-4x">
@@ -72,7 +69,7 @@
                 <h2 class="section-heading text-uppercase">Portfolio</h2>
                 <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
             </div>
-            <div class="row">
+            <div class="row justify-content-center">
                 @foreach($portifolios as $portifolio)
                 <div class="col-lg-4 col-sm-6 mb-4">
                     <!-- Portfolio item 1-->

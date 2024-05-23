@@ -54,14 +54,12 @@
 
 
             <!-- Nav Item - Pages Collapse Menu -->
-            @can('index-config')
             <li class="nav-item">
                 <a @class(['nav-link', 'active'=> isset($menu) && $menu == 'config'])class="nav-link" href="{{ route('admin.config.index') }}">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Configurações</span>
                 </a>
             </li>
-            @endcan
             @can('index-role')
             <li class="nav-item">
                 <a @class(['nav-link', 'active'=> isset($menu) && $menu == 'role'])class="nav-link" href="{{ route('admin.role.index') }}">
@@ -88,7 +86,6 @@
             <div class="sidebar-heading">
                 Configurações do Site
             </div>
-            
 
             <!-- Nav Item - Site -->
             @can('index-banner')
@@ -121,6 +118,14 @@
                 <a class="nav-link" href="{{ route('admin.sobre.index') }}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Sobre Nós</span></a>
+            </li>
+            @endcan
+
+            @can('index-blog')
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.blog.index') }}">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Blog</span></a>
             </li>
             @endcan
 
@@ -402,6 +407,48 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
+
+
+    <!-- biblioteca CKEditor -->
+    <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+
+    <!-- Inicializa o CKEditor no campo de texto -->
+    <script>
+        CKEDITOR.replace('conteudo');
+    </script>
+
+
+    <script>
+        var uploadField = document.getElementById("imagem");
+        var imageUpload = document.getElementById('image-upload');
+
+        imageUpload.addEventListener('click', function() {
+            uploadField.click();
+        });
+
+        uploadField.addEventListener('change', function() {
+            if (this.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    imageUpload.style.backgroundImage = 'url(' + e.target.result + ')';
+                    imageUpload.textContent = ''; // Remove o texto
+                };
+
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+
+        imageUpload.addEventListener('dragover', function(e) {
+            e.preventDefault();
+        }, false);
+
+        imageUpload.addEventListener('drop', function(e) {
+            e.preventDefault();
+            uploadField.files = e.dataTransfer.files;
+        }, false);
+    </script>
+
 
 
 </body>
