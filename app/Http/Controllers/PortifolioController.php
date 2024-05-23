@@ -47,15 +47,16 @@ class PortifolioController extends Controller
 
         $imagem = time() . '.' . $request->imagem->extension();
 
-        $path = $request->imagem->storeAs('portifolios', $imagem, 'public');
+        // Mova a imagem para a pasta 'public/storage/portifolios' no seu projeto
+        $request->imagem->move(public_path('storage/portifolios'), $imagem);
 
-        // Obtenha o caminho completo da imagem
-        $fullPath = asset('storage/' . $path);
+        // O caminho da imagem será 'storage/portifolios/' concatenado com o nome da imagem
+        $path = 'storage/portifolios/' . $imagem;
 
         $portifolio = Portifolio::create([
             'nome' => $request->nome,
             'descricao' => $request->descricao,
-            'imagem' => $fullPath,
+            'imagem' => $path,
             'cliente' => $request->cliente,
             'categoria' => $request->categoria,
             'status' => $request->status,
@@ -79,11 +80,13 @@ class PortifolioController extends Controller
 
         if ($request->hasFile('imagem')) {
             $imagem = time() . '.' . $request->imagem->extension();
-            $path = $request->imagem->storeAs('portifolios', $imagem, 'public');
 
-            // Obtenha o caminho completo da imagem
-            $fullPath = asset('storage/' . $path);
-            $portifolio->imagem = $fullPath;
+            // Mova a imagem para a pasta 'public/storage/portifolios' no seu projeto
+            $request->imagem->move(public_path('storage/portifolios'), $imagem);
+
+            // O caminho da imagem será 'storage/portifolios/' concatenado com o nome da imagem
+            $path = 'storage/portifolios/' . $imagem;
+            $portifolio->imagem = $path;
         }
 
         $portifolio->nome = $request->nome;

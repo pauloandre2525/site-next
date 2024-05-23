@@ -33,10 +33,16 @@
                     <th scope="row">{{ $portifolio->id }}</th>
                     <td style="text-transform:uppercase">{{ $portifolio->nome }}</td>
                     <td>{{ $portifolio->descricao }}</td>
-                    <td><img src="{{ $portifolio->imagem }}" width="100px"> </td>
+                    <td><img src="{{ asset($portifolio->imagem) }}" width="100px"> </td>
                     <td>{{ $portifolio->cliente }}</td>
                     <td>{{ $portifolio->categoria }}</td>
-                    <td>{{ $portifolio->status }}</td>
+                    <td style="text-align: center;">
+                        @if ($portifolio->status == 'ativo')
+                        <div class="badge rounded-pill text-bg-success">{{ $portifolio->status }}</div>
+                        @else
+                        <div class="badge rounded-pill text-bg-danger">{{ $portifolio->status }}</div>
+                        @endif
+                    </td>
                     <td>
                         <a href="{{ route('admin.portifolio.show', ['portifolio' => $portifolio->id]) }}" class="btn btn-info btn-sm" title="Visualizar"><i class="fa-solid fa-eye"></i></a>
                         @can('edit-portifolio')

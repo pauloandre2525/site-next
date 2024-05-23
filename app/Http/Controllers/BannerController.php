@@ -25,7 +25,7 @@ class BannerController extends Controller
     {
         return view('admin.banner.show', ['banner' => $banner]);
     }
- 
+
     //Carregar o Formulário de Cadastro
     public function create()
     {
@@ -45,15 +45,16 @@ class BannerController extends Controller
 
         $imagem = time() . '.' . $request->imagem->extension();
 
-       $path = $request->imagem->storeAs('banners', $imagem, 'public');
+        // Mova a imagem para a pasta 'public/storage/banners' no seu projeto
+        $request->imagem->move(public_path('storage/banners'), $imagem);
 
-        // Obtenha o caminho completo da imagem
-        $fullPath = asset('storage/' . $path);
+        // O caminho da imagem será 'storage/banners/' concatenado com o nome da imagem
+        $path = 'storage/banners/' . $imagem;
 
         $banner = Banner::create([
             'titulo' => $request->titulo,
             'legenda' => $request->legenda,
-            'imagem' => $fullPath,
+            'imagem' => $path,
             'status' => $request->status,
         ]);
 
@@ -72,14 +73,22 @@ class BannerController extends Controller
     //Editar no Banco de Dados
     public function update(Request $request, Banner $banner)
     {
-        
+        $request->validate([
+            'titulo' => 'required',
+            'legenda' => 'required',
+            'imagem' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'status' => 'required',
+        ]);
+
         if ($request->hasFile('imagem')) {
             $imagem = time() . '.' . $request->imagem->extension();
-            $path = $request->imagem->storeAs('banners', $imagem, 'public');
 
-            // Obtenha o caminho completo da imagem
-            $fullPath = asset('storage/' . $path);
-            $banner->imagem = $fullPath;
+            // Mova a imagem para a pasta 'public/storage/banners' no seu projeto
+            $request->imagem->move(public_path('storage/banners'), $imagem);
+
+            // O caminho da imagem será 'storage/banners/' concatenado com o nome da imagem
+            $path = 'storage/banners/' . $imagem;
+            $banner->imagem = $path;
         }
 
         $banner->titulo = $request->titulo;
@@ -89,6 +98,8 @@ class BannerController extends Controller
 
         return redirect()->route('admin.banner.index')->with('success', 'Banner atualizado com sucesso!');
     }
+
+
 
 
 

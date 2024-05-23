@@ -31,7 +31,7 @@
             <dd class="col-sm-10">{{ $equipe->funcao }}</dd>
 
             <dt class="col-sm-2">Imagem</dt>
-            <dd class="col-sm-10"><img src="{{ $equipe->imagem }}" width="200px"> </td>
+            <dd class="col-sm-10"><img src="{{ asset($equipe->imagem) }}" width="200px"> </td>
             </dd>
 
             <dt class="col-sm-2">Whatsapp</dt>

@@ -33,8 +33,14 @@
                     <td style="text-transform:uppercase">{{ $sobre->periodo }}</td>
                     <td style="text-transform:uppercase">{{ $sobre->titulo }}</td>
                     <td>{{ $sobre->descricao }}</td>
-                    <td><img src="{{ $sobre->imagem }}" width="100px"> </td>
-                    <td>{{ $sobre->status }}</td>
+                    <td><img src="{{ asset($sobre->imagem) }}" width="100px"> </td>
+                    <td style="text-align: center;">
+                        @if ($sobre->status == 'ativo')
+                        <div class="badge rounded-pill text-bg-success">{{ $sobre->status }}</div>
+                        @else
+                        <div class="badge rounded-pill text-bg-danger">{{ $sobre->status }}</div>
+                        @endif
+                    </td>
                     <td>
                         <a href="{{ route('admin.sobre.show', ['sobre' => $sobre->id]) }}" class="btn btn-info btn-sm" title="Visualizar"><i class="fa-solid fa-eye"></i></a>
                         @can('edit-sobre')
