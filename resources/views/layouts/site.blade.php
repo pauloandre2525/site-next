@@ -9,7 +9,7 @@
 
     <title>:: {{ $config->titulo }} ::</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href={{ $config->favicon }} />
+    <link rel="icon" type="image/x-icon" href="{{ $config->favicon }}" />
 
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -18,9 +18,6 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/carousel.css') }}" rel="stylesheet" />
-
-
 
 
 <body id="page-top">
@@ -46,13 +43,14 @@
     </nav>
 
 
+
     @yield('conteudo')
 
 
     <!-- Footer-->
-    <footer class="footer py-4">
-        <div class="container">
-            <div class="row align-items-center">
+    <footer class="footer py-4 rodape" style="background-color: #ccc;">
+        <div class=" container">
+            <div class="row align-items-center ms-4 me-4">
                 <div class="col-lg-5 text-lg-start ">Copyright &copy; {{ $config->titulo }}</b>
                 </div>
                 <div class="col-lg-2 my-3 my-lg-0">
@@ -106,8 +104,13 @@
     </div>
     @endforeach
 
+    <!-- jQuery (necessário para os plugins JavaScript do Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 
-    <!-- Core theme JS-->
+    <!-- JavaScript do Bootstrap -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js//bootstrap.bundle.js') }}"></script>
@@ -117,6 +120,19 @@
     <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
     <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            var navbar = document.getElementById('mainNav');
+            if (window.scrollY > 50) { // Ajuste o valor conforme necessário
+                navbar.classList.remove('navbar-static');
+                navbar.classList.add('navbar-fixed');
+            } else {
+                navbar.classList.remove('navbar-fixed');
+                navbar.classList.add('navbar-static');
+            }
+        });
+    </script>
 
 </body>
 

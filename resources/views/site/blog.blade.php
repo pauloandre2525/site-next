@@ -2,7 +2,6 @@
 
 
 @section('conteudo')
-<section>
     <div class="container">
         <h1 class="text-center">Notícias do Blog</h1>
         <hr>
@@ -24,4 +23,3 @@
             @endforeach
         </div>
     </div>
-</section>
