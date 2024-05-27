@@ -14,7 +14,9 @@
         <div class="carousel-inner">
             @foreach ($banners as $key => $banner)
             <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                <a href="{{ $banner->link }}">
                 <img src="{{ $banner->imagem }}" class="d-block w-100 img-fluid" alt="{{ $banner->titulo }}">
+                </a>
                 <div class="carousel-caption d-none d-md-block">
                     <h5>{{ $banner->titulo }}</h5>
                     <p>{{ $banner->legenda }}</p>
@@ -210,7 +212,7 @@
         </div>
     </div>
 
-    <!-- Contact-->
+    <!-- Contato-->
     <section class="page-section" id="contato">
         <div class="container">
             <div class="text-center">
@@ -266,7 +268,7 @@
                 @endif
 
                 <!-- Submit Button-->
-                <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase" type="submit">Enviar Menssagem</button></div>
+                <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase" type="submit">Enviar Mensagem</button></div>
             </form>
         </div>
     </section>

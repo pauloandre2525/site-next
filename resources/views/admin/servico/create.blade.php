@@ -25,6 +25,7 @@
             <div class="mb-3">
                 <label for="imagem" class="form-label">Imagem:</label>
                 <select class="form-control" id="imagem" name="imagem">
+                    <option value="">Selecione...</option>
                     <option value="fas fa-house">Casa</option>
                     <option value="fas fa-industry">Industria</option>
                     <option value="fas fa-city">Empresa</option>

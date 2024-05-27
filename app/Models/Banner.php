@@ -17,6 +17,7 @@ class Banner extends Model
         'titulo',
         'legenda',
         'imagem',
+        'link',
         'status',
     ];
 }

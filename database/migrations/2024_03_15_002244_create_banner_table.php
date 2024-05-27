@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('titulo');
             $table->string('legenda');
             $table->string('imagem');
+            $table->string('link');
             $table->string('status');
             $table->timestamps();
         });

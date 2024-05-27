@@ -25,7 +25,7 @@ class HomeController extends Controller
         $banners = Banner::where('status', 'ativo')->get();
         $servicos = Servico::where('status', 'ativo')->get();
         $portifolios = Portifolio::where('status', 'ativo')->get();
-        $sobres = Sobre::where('status', 'ativo')->get();
+        $sobres = Sobre::where('status', 'ativo')->orderBy('id', 'desc')->get();
         $equipes = Equipe::where('status', 'ativo')->get();
         $blogs = Blog::all();
 

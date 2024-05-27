@@ -55,6 +55,7 @@ class BannerController extends Controller
             'titulo' => $request->titulo,
             'legenda' => $request->legenda,
             'imagem' => $path,
+            'link' => $request->link,
             'status' => $request->status,
         ]);
 
@@ -76,7 +77,7 @@ class BannerController extends Controller
         $request->validate([
             'titulo' => 'required',
             'legenda' => 'required',
-            'imagem' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'imagem' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'status' => 'required',
         ]);
 
@@ -93,6 +94,7 @@ class BannerController extends Controller
 
         $banner->titulo = $request->titulo;
         $banner->legenda = $request->legenda;
+        $banner->link = $request->link;
         $banner->status = $request->status;
         $banner->save();
 

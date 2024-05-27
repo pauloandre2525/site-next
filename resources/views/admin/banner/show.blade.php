@@ -1,18 +1,17 @@
 @extends('layouts.admin')
 
-
 @section('conteudo')
 
 <div class="card">
     <div class="card-header">
         Banner - {{ $banner->titulo }}
-        
+
         @can('edit-banner')
-        <a href="{{ route('admin.banner.edit', ['banner' => $banner->id]) }} "class="btn btn-success btn-sm float-end  ml-3">Editar</a>
+        <a href="{{ route('admin.banner.edit', ['banner' => $banner->id]) }}" class="btn btn-success btn-sm float-end  ml-3">Editar</a>
         @endcan
 
         @can('index-banner')
-        <a href="{{ route('admin.banner.index') }} "class="btn btn-warning btn-sm float-end" >Listar</a>
+        <a href="{{ route('admin.banner.index') }}" class="btn btn-warning btn-sm float-end">Listar</a>
         @endcan
     </div>
 
@@ -20,23 +19,50 @@
 
         <x-alert />
 
-        <dl class="row">
-            <dt class="col-sm-2">ID</dt>
-            <dd class="col-sm-10">{{ $banner->id }}</dd>
-        
-            <dt class="col-sm-2">Título</dt>
-            <dd class="col-sm-10">{{ $banner->titulo }}</dd>
+        <div class="row">
+            <div class="col-sm-1 col-4 py-1 d-flex align-items-center" style="background-color: #ccc; border: 1px solid #ffffff">
+                <strong>Título:</strong>
+            </div>
+            <div class="col-sm-11 col-8 py-1">
+                {{ $banner->titulo }}
+            </div>
+        </div>
 
-            <dt class="col-sm-2">Legenda</dt>
-            <dd class="col-sm-10">{{ $banner->legenda }}</dd>
+        <div class="row">
+            <div class="col-sm-1 col-4 py-1 d-flex align-items-center" style="background-color: #ccc; border: 1px solid #ffffff">
+                <strong>Legenda:</strong>
+            </div>
+            <div class="col-sm-11 col-8 py-1">
+                {{ $banner->legenda }}
+            </div>
+        </div>
 
-            <dt class="col-sm-2">Imagem</dt>
-            <dd class="col-sm-10"><img src="{{ asset($banner->imagem) }}" width="200px"> </td></dd>
+        <div class="row">
+            <div class="col-sm-1 col-4 py-1 d-flex align-items-center" style="background-color: #ccc; border: 1px solid #ffffff">
+                <strong>Imagem:</strong>
+            </div>
+            <div class="col-sm-11 col-8 py-1">
+                <img src="{{ asset($banner->imagem) }}" class="img-fluid" alt="Imagem do Banner">
+            </div>
+        </div>
 
-            <dt class="col-sm-2">Status</dt>
-            <dd class="col-sm-10">{{ $banner->status }}</dd>
-        </dl>
- 
+        <div class="row">
+            <div class="col-sm-1 col-4 py-1 d-flex align-items-center" style="background-color: #ccc; border: 1px solid #ffffff">
+                <strong>Link para:</strong>
+            </div>
+            <div class="col-sm-11 col-8 py-1">
+                {{ $banner->link }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-1 col-4 py-1 d-flex align-items-center" style="background-color: #ccc; border: 1px solid #ffffff">
+                <strong>Status:</strong>
+            </div>
+            <div class="col-sm-11 col-8 py-1">
+                {{ $banner->status }}
+            </div>
+        </div>
     </div>
 </div>
 
