@@ -17,7 +17,10 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/aplicacoes', [HomeController::class, 'servico'])->name('aplicacoes');
+Route::get('/clientes', [HomeController::class, 'portifolio'])->name('clientes');
 Route::get('/blog', [HomeController::class, 'show'])->name('blog');
+Route::get('/sobre-nos', [HomeController::class, 'empresa'])->name('sobre-nos');
 Route::get('/contato', [HomeController::class, 'contato'])->name('contato');
 Route::post('/contato', [HomeController::class, 'postContato'])->name('postContato');
 

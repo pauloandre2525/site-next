@@ -83,10 +83,73 @@ class HomeController extends Controller
     }
 
 
+    public function empresa()
+    {
+        $config = DB::table('config')->first();
+        $portifolios = Portifolio::where('status', 'ativo')->get();
+        $sobres = Sobre::where('status', 'ativo')->orderBy('id', 'desc')->get();
+
+
+        return view(
+            'site.sobre-nos',
+            [
+                'config' => $config,
+                'portifolios' => $portifolios,
+                'sobres' => $sobres
+            ]
+        );
+    }
+
+    public function servico()
+    {
+        $config = DB::table('config')->first();
+        $portifolios = Portifolio::where('status', 'ativo')->get();
+        $servicos = Servico::where('status', 'ativo')->get();
+
+
+        return view(
+            'site.aplicacoes',
+            [
+                'config' => $config,
+                'portifolios' => $portifolios,
+                'servicos' => $servicos
+            ]
+        );
+    }
+
+
+    public function portifolio()
+    {
+        $config = DB::table('config')->first();
+        $portifolios = Portifolio::where('status', 'ativo')->get();
+
+
+        return view(
+            'site.clientes',
+            [
+                'config' => $config,
+                'portifolios' => $portifolios
+            ]
+        );
+    }
+
+
     public function contato()
     {
-        return view('site.index');
+        $config = DB::table('config')->first();
+        $portifolios = Portifolio::where('status', 'ativo')->get();
+
+
+        return view(
+            'site.contato',
+            [
+                'config' => $config,
+                'portifolios' => $portifolios
+            ]
+        );
     }
+
+
 
     public function postContato(Request $request)
     {
